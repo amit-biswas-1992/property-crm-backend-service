@@ -66,10 +66,4 @@ export class LogTracker extends BaseEntity{
     })
     user_type: string;
 
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
-
 }

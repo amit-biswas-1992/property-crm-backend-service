@@ -39,7 +39,7 @@ import { Users } from './users/entities/users.entity';
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'property_crm_demo',
+      database: 'property_crm_new',
       entities: [Budget, BookingRequest, BookingStatus, ClientSaleAgent, ClientSupportManager, ClientTags, Clients, Country, LogTracker, Priority, Roles, Segment, Snooze, SourceOfEnquiry, Users],
       synchronize: true,
     }),

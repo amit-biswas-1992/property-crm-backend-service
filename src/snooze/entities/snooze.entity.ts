@@ -17,10 +17,5 @@ export class Snooze extends BaseEntity{
     })
     snooze: string;
 
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
 
 }

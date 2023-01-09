@@ -17,11 +17,4 @@ export class BookingStatus extends BaseEntity{
     })
     status: string;
 
-
-    
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
 }

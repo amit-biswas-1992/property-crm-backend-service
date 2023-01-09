@@ -17,10 +17,4 @@ export class Segment extends BaseEntity{
     })
     segment: string;
 
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
-
 }

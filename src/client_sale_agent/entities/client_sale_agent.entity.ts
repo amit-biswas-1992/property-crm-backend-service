@@ -31,11 +31,5 @@ export class ClientSaleAgent extends BaseEntity{
     @JoinColumn({ name: 'client_id'})
     client : Clients;
     
-    
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
 
 }

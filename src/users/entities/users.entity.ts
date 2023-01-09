@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { BaseEntity } from "src/Config/base.entity";
+import { Country } from "src/country/entities/country.entity";
 import { Roles } from "src/roles/entities/roles.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -59,10 +60,12 @@ export class Users extends BaseEntity{
 
     @ApiProperty()
     @Column({
-        nullable: false,
-        default: " "
+        type : 'bigint'
     })
-    country: string;
+    country_id: number;
+    @ManyToOne(type => Country, country => country.id)
+    @JoinColumn({ name: 'country'})
+    country: Country;
 
     @ApiProperty()
     @Column({
@@ -71,10 +74,5 @@ export class Users extends BaseEntity{
     })
     city: string;
 
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
 
 }

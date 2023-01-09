@@ -18,6 +18,7 @@ export class ClientSupportManager extends BaseEntity{
         default: " "
     })
     clientSupportManager: string;
+    
 
     @ApiProperty()
     @Column({
@@ -28,6 +29,7 @@ export class ClientSupportManager extends BaseEntity{
     @JoinColumn({ name: 'support_manager_id'})
     user : Users;
 
+
     @ApiProperty()
     @Column({
         type: 'bigint'
@@ -37,10 +39,5 @@ export class ClientSupportManager extends BaseEntity{
     @JoinColumn({ name: 'client_id'})
     client : Clients;
 
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
 
 }

@@ -1,6 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Clients } from "src/clients/entities/clients.entity";
 import { BaseEntity } from "src/Config/base.entity";
+import { SourceOfEnquiry } from "src/source_of_enquiry/entities/source_of_enquiry.entity";
+import { Users } from "src/users/entities/users.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -29,23 +31,22 @@ export class BookingRequest extends BaseEntity{
 
     @ApiProperty()
     @Column({
-        nullable: false,
-        default: " "
+        type : "bigint"
     })
-    raised_by: string;
+    raised_by_id: number;
+    @ManyToOne(type => Users, users => users.id)
+    @JoinColumn({ name: 'raised_by_id'})
+    users : Users;
 
     @ApiProperty()
     @Column({
-        nullable: false,
-        default: " "
+        type : 'bigint'
     })
-    source_of_inquiry: string;
+    source_of_inquiry_id: string;    
+    @ManyToOne(type => SourceOfEnquiry, sourceOfEnquiry => sourceOfEnquiry.id)
+    @JoinColumn({ name: 'source_of_inquiry_id'})
+    sourceOfEnquiry : SourceOfEnquiry;
 
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
-    
+
 
 }
