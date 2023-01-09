@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Clients } from "src/clients/entities/clients.entity";
 import { BaseEntity } from "src/Config/base.entity";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class SourceOfEnquiry extends BaseEntity{
@@ -17,10 +18,8 @@ export class SourceOfEnquiry extends BaseEntity{
     })
     enquiry: string;
 
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
+    
+    @OneToMany(type => Clients, clients => clients.sourceOfEnquiry)
+    clients: Clients[];
 
 }

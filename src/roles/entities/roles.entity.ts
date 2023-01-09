@@ -1,6 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { BaseEntity } from "src/Config/base.entity";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Users } from "src/users/entities/users.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Roles extends BaseEntity{
@@ -17,10 +18,9 @@ export class Roles extends BaseEntity{
     })
     role: string;
 
-    @ApiProperty()
-    @Column({
-        type: 'bigint'
-    })
-    deleted: number;
 
+    
+    @OneToMany(type => Users, users => users.roles)
+    users: Users[];
+    
 }
